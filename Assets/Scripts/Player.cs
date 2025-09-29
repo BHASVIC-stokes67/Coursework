@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private float move = 5f, jump = 10f;
     private bool grounded;
     private bool canDash;
+    private float nextDash;
 
     private Rigidbody2D body;
     private BoxCollider2D box;
@@ -74,18 +75,18 @@ public class Player : MonoBehaviour
 
     private void Dash()
     {
-        if(Input.GetKey(KeyCode.LeftShift) && canDash)
+        if(Input.GetKey(KeyCode.LeftShift) && Time.time > nextDash)
         {
             Debug.Log("input");
-            body.AddForce(new Vector2(10, 0), ForceMode2D.Impulse);
-            canDash = false;
-            Cooldown();
+            if(sprite.flipX == false) 
+            {
+                body.AddForce(new Vector2(10, 0), ForceMode2D.Impulse);
+            }
+            else 
+            {
+                body.AddForce(new Vector2(-10, 0), ForceMode2D.Impulse);
+            }
+            nextDash = Time.time + 1;
         }
-    }
-
-    private IEnumerator Cooldown()
-    {
-        yield return new WaitForSeconds(2);
-        canDash = True;
     }
 }
