@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     private float moveX;
     [SerializeField]
-    private float move = 5f, jump = 10f;
+    private float move = 5f, jump = 10f, dashForce = 15f;
     private bool grounded;
     private bool canDash;
     private float nextDash;
@@ -80,11 +80,11 @@ public class Player : MonoBehaviour
             Debug.Log("input");
             if(sprite.flipX == false) 
             {
-                body.AddForce(new Vector2(10, 0), ForceMode2D.Impulse);
+                body.AddForce(new Vector2(dashForce, 0), ForceMode2D.Impulse);
             }
             else 
             {
-                body.AddForce(new Vector2(-10, 0), ForceMode2D.Impulse);
+                body.AddForce(new Vector2(-dashForce, 0), ForceMode2D.Impulse);
             }
             nextDash = Time.time + 1;
         }
