@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
 {
     private float moveX;
     [SerializeField]
-    private float move = 5f, jump = 10f, dashForce = 15f;
-    private bool grounded;
+    private float move = 5f, jump = 10f, dashForce = 10f;
+    private bool grounded, canDoubleJump;
     private bool canDash;
     private float nextDash;
 
@@ -45,6 +45,11 @@ public class Player : MonoBehaviour
             body.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
             grounded = false;
         }
+        else if (canDoubleJump && Input.GetButtonDown("Jump"))
+        {
+            body.linearVelocity = new Vector2(0, jump);
+            canDoubleJump = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -52,6 +57,7 @@ public class Player : MonoBehaviour
         if(collision.gameObject.CompareTag("floor"))
         {
             grounded = true;
+            canDoubleJump = true;
         }
     }
 
