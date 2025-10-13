@@ -1,4 +1,3 @@
-using System.Xml.Serialization;
 using UnityEngine;
 
 public class Merchant : MonoBehaviour
@@ -9,6 +8,8 @@ public class Merchant : MonoBehaviour
     [SerializeField]
     private GameObject[] itemRef;
     private GameObject item;
+    [SerializeField]
+    private Transform location;
 
     void Start()
     {
@@ -17,10 +18,16 @@ public class Merchant : MonoBehaviour
             prices[i] = Random.Range(50, 200);
             inventory[i] = possibleItems[Random.Range(0, possibleItems.Length)];
         }
+        MakeItem();
     }
 
     private void MakeItem()
     {
-        index = Random.Range(0, itemRef.length);
+        for(int i = 0; i < 3; i++)
+        {
+            index = Random.Range(0, itemRef.Length);
+            item = Instantiate(itemRef[index]);
+            item.transform.position = location.position + new Vector3(i * 2, 0, 0);
+        }
     }
 }
