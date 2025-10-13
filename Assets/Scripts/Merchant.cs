@@ -27,7 +27,7 @@ public class Merchant : MonoBehaviour
         {
             index = Random.Range(0, itemRef.Length);
             item = Instantiate(itemRef[index]);
-            item.transform.position = location.position + new Vector3(i * 2, 0, 0);
+            item.transform.position = location.position + new Vector3((i * 2) + 2, 0, 0);
         }
     }
 }
