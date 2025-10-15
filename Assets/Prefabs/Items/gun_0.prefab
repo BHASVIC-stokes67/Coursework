@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6953107539041776336}
   - component: {fileID: 3498722270902495850}
   - component: {fileID: 6898019703710741258}
+  - component: {fileID: 2967887378878107606}
   m_Layer: 0
   m_Name: Gun_0
   m_TagString: Item
@@ -125,7 +126,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.012087584, y: 0.024176717}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -135,5 +136,18 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.21, y: 0.34}
+  m_Size: {x: 1.6693578, y: 0.823534}
   m_EdgeRadius: 0
+--- !u!114 &2967887378878107606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425385813270500473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddfa806f793ab4a498eee9d4ef2a18a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  hint: {fileID: 2700160812567935774, guid: f36c8177c27f9b349bd3f840cd93cfd2, type: 3}

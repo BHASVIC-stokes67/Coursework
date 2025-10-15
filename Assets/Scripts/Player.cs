@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float move = 5f, jump = 10f, dashForce = 10f;
     private bool grounded, canDoubleJump;
-    private bool canDash;
     private float nextDash;
 
     private Rigidbody2D body;
@@ -83,16 +82,9 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.LeftShift) && Time.time > nextDash)
         {
-            Debug.Log("input");
-            if(sprite.flipX == false) 
-            {
-                body.AddForce(new Vector2(dashForce, 0), ForceMode2D.Impulse);
-            }
-            else 
-            {
-                body.AddForce(new Vector2(-dashForce, 0), ForceMode2D.Impulse);
-            }
-            nextDash = Time.time + 1;
+            if(sprite.flipX == false) body.AddForce(new Vector2(dashForce, 0), ForceMode2D.Impulse);
+            else body.AddForce(new Vector2(-dashForce, 0), ForceMode2D.Impulse);
+            nextDash = Time.time + 0.5f;
         }
     }
 }

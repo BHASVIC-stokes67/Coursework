@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Merchant : MonoBehaviour
 {
-    private string[] possibleItems = new string[] { "Ace", "Monter", "Broken Sword", "Gun" }, inventory;
-    private int[] prices;
+    private string[] possibleItems = new string[] { "Ace", "Monter", "Broken Sword", "Gun" }, inventory = new string[3];
+    private int[] prices = new int[3];
     private int index;
     [SerializeField]
     private GameObject[] itemRef;

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8613633503896454343}
   - component: {fileID: 1354492508251016848}
   - component: {fileID: 4376058174296623637}
+  - component: {fileID: 5015871682784702313}
   m_Layer: 0
   m_Name: Ace_0
   m_TagString: Item
@@ -125,7 +126,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.036265135, y: 0.012088388}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -135,5 +136,18 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.38, y: 0.53}
+  m_Size: {x: 0.88771105, y: 1.0377107}
   m_EdgeRadius: 0
+--- !u!114 &5015871682784702313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589522908375972537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddfa806f793ab4a498eee9d4ef2a18a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  hint: {fileID: 2700160812567935774, guid: f36c8177c27f9b349bd3f840cd93cfd2, type: 3}
