@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.Tilemaps;
 
 public class Player : MonoBehaviour
@@ -80,11 +82,19 @@ public class Player : MonoBehaviour
 
     private void Dash()
     {
-        if(Input.GetKey(KeyCode.LeftShift) && Time.time > nextDash)
+        if (Input.GetKey(KeyCode.LeftShift) && Time.time > nextDash)
         {
-            if(sprite.flipX == false) body.AddForce(new Vector2(dashForce, 0), ForceMode2D.Impulse);
+            if (sprite.flipX == false) body.AddForce(new Vector2(dashForce, 0), ForceMode2D.Impulse);
             else body.AddForce(new Vector2(-dashForce, 0), ForceMode2D.Impulse);
             nextDash = Time.time + 0.5f;
+        }
+    }
+    
+    public void addToInventory(String item)
+    {
+        if(item == "Ace_0(Clone)")
+        {
+            move += 5;
         }
     }
 }

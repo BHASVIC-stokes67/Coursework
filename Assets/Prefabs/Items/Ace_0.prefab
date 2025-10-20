@@ -150,4 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddfa806f793ab4a498eee9d4ef2a18a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  hint: {fileID: 2700160812567935774, guid: f36c8177c27f9b349bd3f840cd93cfd2, type: 3}
+  reference: {fileID: 2700160812567935774, guid: f36c8177c27f9b349bd3f840cd93cfd2, type: 3}
+  Player:
+    serializedVersion: 2
+    m_Bits: 64
