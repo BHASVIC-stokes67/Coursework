@@ -7,17 +7,18 @@ public class Item : MonoBehaviour
 {
     [SerializeField]
     private GameObject hint;
+    private GameObject copy;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Instantiate(hint);
+            copy = Instantiate(hint);
         }
         else
         {
             try
             {
-                Destroy(hint);
+                Destroy(copy);
             }
             catch
             {
@@ -26,11 +27,11 @@ public class Item : MonoBehaviour
         }
     }
 
-    private void OnTri(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(hint);
+            Destroy(copy);
         }
     }
 }
