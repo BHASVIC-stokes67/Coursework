@@ -1,26 +1,26 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Mono.Cecil.Cil;
+using UnityEditor.Build;
 
 public class Item : MonoBehaviour
 {
     [SerializeField]
     private GameObject reference;
     [SerializeField]
-    private LayerMask Player;
-    [SerializeField]
-    Player player;
-
-
+    private LayerMask Layer;
     private GameObject hint;
 
     void Update()
     {
-        if(Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 1, Player))
+        GameObject player = GameObject.Find("Player");
+        PlayerScript script = player.GetComponent<PlayerScript>();
+        if(Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 1, Layer))
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                player.addToInventory(gameObject.name);
+                script.addToInventory(name);
                 Destroy(gameObject);
             }
         }

@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.Tilemaps;
 
-public class Player : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     private float moveX;
     [SerializeField]
     private float move = 5f, jump = 10f, dashForce = 10f;
-    private bool grounded, canDoubleJump;
+    private bool grounded;
+    private int canDoubleJump, maxDoubleJump = 1;
     private float nextDash;
 
     private Rigidbody2D body;
@@ -46,10 +47,10 @@ public class Player : MonoBehaviour
             body.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
             grounded = false;
         }
-        else if (canDoubleJump && Input.GetButtonDown("Jump"))
+        else if (canDoubleJump > 0 && Input.GetButtonDown("Jump"))
         {
             body.linearVelocity = new Vector2(0, jump);
-            canDoubleJump = false;
+            canDoubleJump -= 1;
         }
     }
 
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour
         if(collision.gameObject.CompareTag("floor"))
         {
             grounded = true;
-            canDoubleJump = true;
+            canDoubleJump = maxDoubleJump;
         }
     }
 
@@ -92,9 +93,14 @@ public class Player : MonoBehaviour
     
     public void addToInventory(String item)
     {
-        if(item == "Ace_0(Clone)")
+        if (item == "Ace_0(Clone)")
         {
             move += 5;
+        }
+        else if(item == "Monter_0(Clone)")
+        {
+            maxDoubleJump += 1;
+            canDoubleJump += 1;
         }
     }
 }
