@@ -19,7 +19,9 @@ public class PlayerScript : MonoBehaviour
     private SpriteRenderer sprite;
 
     [SerializeField]
+    private GameObject bulletRef;
     private GameObject Bullet;
+    private int attackSpeed;
 
     private void Awake()
     {
@@ -68,19 +70,38 @@ public class PlayerScript : MonoBehaviour
 
     private void Animate()
     {
-        if(moveX > 0)
+        if(anim.GetBool("isHolding") == false) 
         {
-            anim.SetBool("isRunning", true);
-            sprite.flipX = false;
+            if(moveX > 0)
+            {
+                anim.SetBool("isRunning", true);
+                sprite.flipX = false;
+            }
+            else if (moveX < 0)
+            {
+                anim.SetBool("isRunning", true);
+                sprite.flipX = true;
+            }
+            else
+            {
+                anim.SetBool("isRunning", false);
+            }
         }
-        else if (moveX < 0)
-        {
-            anim.SetBool("isRunning", true);
-            sprite.flipX = true;
-        }
-        else
-        {
-            anim.SetBool("isRunning", false);
+        else{
+            if(moveX > 0)
+            {
+                anim.SetBool("isRunning", true);
+                sprite.flipX = false;
+            }
+            else if (moveX < 0)
+            {
+                anim.SetBool("isRunning", true);
+                sprite.flipX = true;
+            }
+            else
+            {
+                anim.SetBool("isRunning", false);
+            }
         }
     }
 
@@ -95,14 +116,19 @@ public class PlayerScript : MonoBehaviour
     }
 
     private void attack() {
-        if(Input.GetMouseButtonDown(0)) {
-
+        if(Input.GetMouseButtonDown(0) && Time.time > attackSpeed && anim.GetBool("isHolding")) {
+            Bullet = Instantiate(bulletRef);
+            print("shoot");
         }
     }
     
     public void addToInventory(String item)
     {
-        if (item == "Ace_0(Clone)")
+        if(item == "Weapon_0") 
+        {
+            anim.SetBool("isHolding", true);
+        }
+        else if (item == "Ace_0(Clone)")
         {
             move += 5;
         }
