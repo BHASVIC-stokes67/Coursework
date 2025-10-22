@@ -788,6 +788,7 @@ MonoBehaviour:
   move: 5
   jump: 10
   dashForce: 10
+  Bullet: {fileID: 0}
 --- !u!1001 &6810466732056268090
 PrefabInstance:
   m_ObjectHideFlags: 0

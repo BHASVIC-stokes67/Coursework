@@ -18,6 +18,9 @@ public class PlayerScript : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sprite;
 
+    [SerializeField]
+    private GameObject Bullet;
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -30,8 +33,8 @@ public class PlayerScript : MonoBehaviour
     {
         Move();
         Jump();
-        Animate();
         Dash();
+        Animate();
     }
 
     private void Move()
@@ -88,6 +91,12 @@ public class PlayerScript : MonoBehaviour
             if (sprite.flipX == false) body.AddForce(new Vector2(dashForce, 0), ForceMode2D.Impulse);
             else body.AddForce(new Vector2(-dashForce, 0), ForceMode2D.Impulse);
             nextDash = Time.time + 0.5f;
+        }
+    }
+
+    private void attack() {
+        if(Input.GetMouseButtonDown(0)) {
+
         }
     }
     
