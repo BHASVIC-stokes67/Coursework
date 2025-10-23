@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Merchant : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Merchant : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            prices[i] = Random.Range(50, 200);
+            prices[i] = Random.Range(25, 50);
             inventory[i] = possibleItems[Random.Range(0, possibleItems.Length)];
         }
         MakeItem();
@@ -27,6 +28,8 @@ public class Merchant : MonoBehaviour
         {
             index = Random.Range(0, itemRef.Length);
             item = Instantiate(itemRef[index]);
+            Item script = item.GetComponent<Item>();
+            script.price = prices[i];
             item.transform.position = location.position + new Vector3((i * 2) + 2, 0, 0);
         }
     }

@@ -3,15 +3,19 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.Tilemaps;
+using static UnityEditor.Progress;
 
 public class PlayerScript : MonoBehaviour
 {
     private float moveX;
     [SerializeField]
     private float move = 5f, jump = 10f, dashForce = 10f;
+    public float health = 25;
     private bool grounded;
     private int canDoubleJump, maxDoubleJump = 1;
     private float nextDash;
+    [SerializeField]
+    public float money = 100;
 
     private Rigidbody2D body;
     private BoxCollider2D box;
@@ -20,8 +24,11 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField]
     private GameObject bulletRef;
-    private GameObject Bullet;
-    private int attackSpeed;
+    private GameObject bullet;
+    public float damage = 10;
+    [SerializeField]
+    private Transform location;
+    private float attackSpeed, cooldown = 0.4f;
 
     private void Awake()
     {
@@ -37,6 +44,8 @@ public class PlayerScript : MonoBehaviour
         Jump();
         Dash();
         Animate();
+        Attack();
+        Die();
     }
 
     private void Move()
@@ -63,7 +72,7 @@ public class PlayerScript : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("floor"))
         {
-            grounded = true;
+            grounded = true; 
             canDoubleJump = maxDoubleJump;
         }
     }
@@ -109,16 +118,44 @@ public class PlayerScript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift) && Time.time > nextDash)
         {
-            if (sprite.flipX == false) body.AddForce(new Vector2(dashForce, 0), ForceMode2D.Impulse);
-            else body.AddForce(new Vector2(-dashForce, 0), ForceMode2D.Impulse);
+            if (sprite.flipX == false)
+            {
+                body.AddForce(new Vector2(dashForce, 0), ForceMode2D.Impulse);
+            }
+            else 
+            { 
+                body.AddForce(new Vector2(-dashForce, 0), ForceMode2D.Impulse); 
+            }
             nextDash = Time.time + 0.5f;
         }
     }
 
-    private void attack() {
+    private void Attack() {
         if(Input.GetMouseButtonDown(0) && Time.time > attackSpeed && anim.GetBool("isHolding")) {
-            Bullet = Instantiate(bulletRef);
+            bullet = Instantiate(bulletRef);
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            if (sprite.flipX == false)
+            {
+                bullet.transform.position = location.position + new Vector3(1, 0, 0);
+                bulletScript.damage = damage;
+                bulletScript.speed = 20;
+            }
+            else
+            {
+                bullet.transform.position = location.position + new Vector3(-1, 0, 0);
+                bulletScript.damage = damage;
+                bulletScript.speed = -20;
+            }
+            attackSpeed = Time.time + 0.4f;
             print("shoot");
+        }
+    }
+
+    private void Die()
+    {
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
         }
     }
     
@@ -136,6 +173,14 @@ public class PlayerScript : MonoBehaviour
         {
             maxDoubleJump += 1;
             canDoubleJump += 1;
+        }
+        else if (item == "Broken_Sword_0(Clone)")
+        {
+            cooldown = (float)(cooldown / 0.9);
+        }
+        else if (item == "gun_0(Clone)")
+        {
+            damage = (float)(damage * 1.1);
         }
     }
 }

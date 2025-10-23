@@ -151,7 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
   reference: {fileID: 2700160812567935774, guid: f36c8177c27f9b349bd3f840cd93cfd2, type: 3}
+  reference_broke: {fileID: 1086012690976684191, guid: d429342927042f0469c05e9cf74c8085, type: 3}
   Layer:
     serializedVersion: 2
     m_Bits: 64
-  player: {fileID: 4817772021354324935, guid: eee3d97fe4b340d41b4ad0b453d7ef04, type: 3}
+  price: 0

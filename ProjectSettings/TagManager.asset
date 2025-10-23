@@ -6,6 +6,10 @@ TagManager:
   tags:
   - floor
   - Item
+  - Enemies
+  - Wall
+  - Zombie
+  - Gunner
   layers:
   - Default
   - TransparentFX
@@ -15,9 +19,9 @@ TagManager:
   - UI
   - Player
   - Merchant
-  - 
-  - 
-  - 
+  - Enemies
+  - Wall
+  - Floor
   - 
   - 
   - 
