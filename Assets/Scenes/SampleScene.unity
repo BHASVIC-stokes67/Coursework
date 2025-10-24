@@ -809,11 +809,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1978228153 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4265108642536945557, guid: 4dbace6168125a643a7b8ee5ffcb7097, type: 3}
-  m_PrefabInstance: {fileID: 6376213960128636952}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2076811398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,10 +1185,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6133562395705950030, guid: 4dbace6168125a643a7b8ee5ffcb7097, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1978228153}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1207,10 +1198,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 528976037059985157, guid: fc76c821dd90e6c429c1f43f83ece087, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4085085556379826879, guid: fc76c821dd90e6c429c1f43f83ece087, type: 3}
       propertyPath: m_Name
       value: Merchant

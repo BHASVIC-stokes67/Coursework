@@ -206,3 +206,4 @@ MonoBehaviour:
   health: 7
   body: {fileID: 2441850473145594394}
   sprite: {fileID: 2538485968459672304}
+  animator: {fileID: 4265108642536945557}
