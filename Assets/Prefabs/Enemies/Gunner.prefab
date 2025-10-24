@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9093666964090802297}
   - component: {fileID: 6962033914481633115}
   - component: {fileID: 602990881708100817}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Gunner
   m_TagString: Enemies
   m_Icon: {fileID: 0}

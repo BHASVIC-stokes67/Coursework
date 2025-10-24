@@ -19,7 +19,13 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         int collisionLayer = collision.gameObject.layer;
-        if (collision.gameObject.CompareTag("Wall") || collisionLayer == 8 || collision.gameObject.CompareTag("floor"))
+        print(collisionLayer);
+        if (collisionLayer == 10 || collisionLayer == 11)
+        {
+            print("collided with floor");
+            Destroy(this.gameObject);
+        }
+        if (collisionLayer == 9)
         {
             if (collision.gameObject.CompareTag("Zombie"))
             {
@@ -30,9 +36,20 @@ public class Bullet : MonoBehaviour
             else if (collision.gameObject.CompareTag("Gunner"))
             {
                 GameObject gunner = collision.gameObject;
-                Enemy gunnerScript = gunner.GetComponent<Enemy>();
+                Gunner gunnerScript = gunner.GetComponent<Gunner>();
                 gunnerScript.health -= damage;
+                print(gunnerScript.health);
             }
+            Destroy(this.gameObject);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        int collisionLayer = collision.gameObject.layer;
+        if (collisionLayer == 10 || collisionLayer == 11)
+        {
+            print("collided with floor");
             Destroy(this.gameObject);
         }
     }

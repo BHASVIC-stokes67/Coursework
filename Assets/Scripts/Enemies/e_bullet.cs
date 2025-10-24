@@ -16,11 +16,16 @@ public class e_bullet : MonoBehaviour
         int collisionLayer = collision.gameObject.layer;
         GameObject player = GameObject.Find("Player");
         PlayerScript playerScript = player.GetComponent<PlayerScript>();
-        if (collision.gameObject.CompareTag("Wall") || collisionLayer == 6 || collision.gameObject.CompareTag("floor"))
+        if (collisionLayer == 6 || collision.gameObject.CompareTag("floor") || collision.gameObject.CompareTag("Wall"))
         {
             if (collision.gameObject.CompareTag("Player"))
             {
                 playerScript.health -= damage;
+                print("collided with player");
+            }
+            if(collision.gameObject.CompareTag("floor"))
+            {
+                print("collided with floor");
             }
             Destroy(this.gameObject);
         }

@@ -147,7 +147,6 @@ public class PlayerScript : MonoBehaviour
                 bulletScript.speed = -20;
             }
             attackSpeed = Time.time + 0.4f;
-            print("shoot");
         }
     }
 
