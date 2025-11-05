@@ -19,10 +19,8 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         int collisionLayer = collision.gameObject.layer;
-        print(collisionLayer);
         if (collisionLayer == 10 || collisionLayer == 11)
         {
-            print("collided with floor");
             Destroy(this.gameObject);
         }
         if (collisionLayer == 9)

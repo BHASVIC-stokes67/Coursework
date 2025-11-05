@@ -17,6 +17,10 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     public float money = 100;
 
+    
+    [SerializeField]
+    private LayerMask Layer;
+
     private Rigidbody2D body;
     private BoxCollider2D box;
     private Animator anim;
@@ -58,22 +62,27 @@ public class PlayerScript : MonoBehaviour
     {
         if (grounded && Input.GetButtonDown("Jump"))
         {
-            body.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
+            body.linearVelocity = new Vector2(body.linearVelocityX, jump);
             grounded = false;
         }
         else if (canDoubleJump > 0 && Input.GetButtonDown("Jump"))
         {
-            body.linearVelocity = new Vector2(0, jump);
+            body.linearVelocity = new Vector2(body.linearVelocityX, jump);
             canDoubleJump -= 1;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("floor"))
+        if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.1f, Layer))
         {
-            grounded = true; 
+            grounded = true;
             canDoubleJump = maxDoubleJump;
+        }
+        if(collision.gameObject.CompareTag("Down"))
+        {
+            transform.position = new Vector2(transform.position.x, 0);
+            body.linearVelocity = new Vector2(body.linearVelocityX, 0);
         }
     }
 
