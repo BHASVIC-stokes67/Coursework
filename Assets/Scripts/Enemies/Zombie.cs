@@ -9,7 +9,8 @@ public class Zombie : Enemy
         GameObject player = GameObject.Find("Player");
         PlayerScript script = player.GetComponent<PlayerScript>();
         Rigidbody2D playerBody = player.GetComponent<Rigidbody2D>();
-        if (collision.gameObject.CompareTag("Player"))
+        int collisionLayer = collision.gameObject.layer;
+        if (collisionLayer == 6)
         {
             animator.SetBool("IsAttacking", true);
             if (sprite.flipX == false)
@@ -24,7 +25,7 @@ public class Zombie : Enemy
             }
             script.health -= damage;
         }
-        if (collision.gameObject.CompareTag("Wall"))
+        else if (collisionLayer == 10 || collisionLayer == 11)
         {
             if (sprite.flipX)
             {
@@ -33,6 +34,21 @@ public class Zombie : Enemy
             else
             {
                 sprite.flipX = true;
+            }
+        }
+        else if(collisionLayer == 13)
+        {
+            if (sprite.flipX)
+            {
+                sprite.flipX = false;
+                body.AddForce(new Vector2(-5, 15), ForceMode2D.Impulse);
+                health -= 2;
+            }
+            else
+            {
+                sprite.flipX = true;
+                body.AddForce(new Vector2(5, 15), ForceMode2D.Impulse);
+                health -= 2;
             }
         }
     }

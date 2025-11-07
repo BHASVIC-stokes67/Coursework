@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
         GameObject gunner = GameObject.Find("Gunner");
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         int collisionLayer = collision.gameObject.layer;
         if (collisionLayer == 10 || collisionLayer == 11)
@@ -38,16 +38,6 @@ public class Bullet : MonoBehaviour
                 gunnerScript.health -= damage;
                 print(gunnerScript.health);
             }
-            Destroy(this.gameObject);
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        int collisionLayer = collision.gameObject.layer;
-        if (collisionLayer == 10 || collisionLayer == 11)
-        {
-            print("collided with floor");
             Destroy(this.gameObject);
         }
     }
