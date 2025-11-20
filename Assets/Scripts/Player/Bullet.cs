@@ -12,8 +12,6 @@ public class Bullet : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         body.linearVelocity = new Vector2(speed, body.linearVelocity.y);
-        GameObject zombie = GameObject.Find("Zombie");
-        GameObject gunner = GameObject.Find("Gunner");
     }
 
     void OnTriggerEnter2D(Collider2D collision)
