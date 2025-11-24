@@ -31,6 +31,9 @@ public abstract class Enemy : MonoBehaviour
     {
         if (health <= 0)
         {
+            GameObject player = GameObject.Find("Player");
+            PlayerScript playerScript = player.GetComponent<PlayerScript>();
+            playerScript.money += 50;
             Destroy(this.gameObject);
         }
     }
