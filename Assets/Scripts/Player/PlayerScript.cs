@@ -29,7 +29,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     private GameObject bulletRef;
     private GameObject bullet;
-    public float damage = 10;
+    public float damage = 5;
     [SerializeField]
     private Transform location;
     private float attackSpeed, cooldown = 0.4f;

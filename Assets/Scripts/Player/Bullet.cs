@@ -21,22 +21,18 @@ public class Bullet : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        if (collisionLayer == 9)
+        if (collision.gameObject.CompareTag("Zombie"))
         {
-            if (collision.gameObject.CompareTag("Zombie"))
-            {
-                GameObject zombie = collision.gameObject;
-                Enemy zombieScript = zombie.GetComponent<Enemy>();
-                zombieScript.health -= damage;
-            }
-            else if (collision.gameObject.CompareTag("Gunner"))
-            {
-                GameObject gunner = collision.gameObject;
-                Gunner gunnerScript = gunner.GetComponent<Gunner>();
-                gunnerScript.health -= damage;
-                print(gunnerScript.health);
-            }
-            Destroy(this.gameObject);
+            GameObject zombie = collision.gameObject;
+            Enemy zombieScript = zombie.GetComponent<Enemy>();
+            zombieScript.health -= damage;
         }
+        else if (collision.gameObject.CompareTag("Gunner"))
+        {
+            GameObject gunner = collision.gameObject;
+            Gunner gunnerScript = gunner.GetComponent<Gunner>();
+            gunnerScript.health -= damage;
+        }
+        Destroy(this.gameObject);
     }
 }
