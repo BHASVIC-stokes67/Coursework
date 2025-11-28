@@ -8,10 +8,7 @@ public class Death : MonoBehaviour
 
     void Update()
     {
-        if(HasDied())
-        {
-            deadUI.SetActive(true);
-        }
+        deadUI.SetActive(HasDied());
     }
 
     //Checks if the player has died
