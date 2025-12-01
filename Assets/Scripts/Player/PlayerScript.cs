@@ -34,6 +34,7 @@ public class PlayerScript : MonoBehaviour
     private Transform location;
     private float attackSpeed, cooldown = 0.4f;
 
+    //Getting all of the components
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -72,6 +73,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    //Double-Jump code. It detects when you hit the floor
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 0.5f), 0.1f, Layer))
@@ -123,6 +125,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    //Dashing adds force instead of setting a direction and fixed horizontal speed
     private void Dash()
     {
         if (Input.GetKey(KeyCode.LeftShift) && Time.time > nextDash)
@@ -139,6 +142,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    //Creates a bullet when you are holding the gun on input
     private void Attack() {
         if(Input.GetMouseButtonDown(0) && Time.time > attackSpeed && anim.GetBool("isHolding")) {
             bullet = Instantiate(bulletRef);
@@ -159,6 +163,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    //Kills you
     private void Die()
     {
         if (health <= 0)
@@ -167,6 +172,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
     
+    //This does not actually add anything to an inventry, it adds the bonus from the item to the player instead
     public void addToInventory(String item)
     {
         if(item == "Weapon_0") 
@@ -184,11 +190,11 @@ public class PlayerScript : MonoBehaviour
         }
         else if (item == "Broken_Sword_0(Clone)")
         {
-            cooldown = (float)(cooldown / 0.9);
+            cooldown = (float)(cooldown / 0.6);
         }
         else if (item == "gun_0(Clone)")
         {
-            damage = (float)(damage * 1.1);
+            damage = (float)(damage * 1.3);
         }
     }
 }

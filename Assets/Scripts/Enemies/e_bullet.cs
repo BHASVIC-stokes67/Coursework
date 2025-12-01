@@ -31,12 +31,10 @@ public class e_bullet : MonoBehaviour
                     body.AddForce(new Vector2(-15, 5), ForceMode2D.Impulse);
                 }
                 body.AddForce(new Vector2(-5, 15), ForceMode2D.Impulse);
-                print("collided with player");
                 Destroy(this.gameObject);
             }
             if(collisionLayer == 10 || collisionLayer == 11)
             {
-                print("collided with floor");
                 Destroy(this.gameObject);
             }
         }

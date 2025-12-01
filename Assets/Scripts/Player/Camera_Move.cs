@@ -5,6 +5,8 @@ public class Camera_Move : MonoBehaviour
 {
     private GameObject player;
     private Transform p_Location;
+
+    //Camera Movement code is within Update
     void Update()
     {
         if(GameObject.Find("Player") != null)

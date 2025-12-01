@@ -7,7 +7,7 @@ public class Switch : MonoBehaviour
     private GameObject platform;
     [SerializeField]
     private LayerMask layer;
-    private bool isFlipped = false;
+    private bool isFlipped = true;
 
     void Update()
     {

@@ -35,7 +35,12 @@ public class Boss : MonoBehaviour
     private int damage = 5;
     private float health = 50;
     private float attackCooldown = 0;
+    private bool canAttack = true;
 
+private void Start()
+    {
+         StartCoroutine(cooldown());
+    }
     private void Update()
     {
         Vector3 playerLocation = new Vector3(playerTransform.position.x, playerTransform.position.y, 0);
@@ -47,34 +52,40 @@ public class Boss : MonoBehaviour
         {
             sprite.flipX = true;
         }
-        Attack();
+        // if(canAttack)
+        // {
+        //     Attack();
+        //     canAttack = false;
+        // }
+        // else
+        // {
+        //     StartCoroutine(cooldown());
+        // }
     }
 
     private void Attack()
-    {
-        cooldown();
-        if (Random.Range(1, 10) / 2 == 0)
+    {   
+        bullet = Instantiate(bulletRef);
+        e_bullet bulletScript = bullet.GetComponent<e_bullet>();
+        if (sprite.flipX == false)
         {
-            bullet = Instantiate(bulletRef);
-            e_bullet bulletScript = bullet.GetComponent<e_bullet>();
-            if (sprite.flipX == false)
-            {
-                bullet.transform.position = location.position + new Vector3(1, 0, 0);
-                bulletScript.damage = damage;
-                bulletScript.speed = 20;
-            }
-            else
-            {
-                bullet.transform.position = location.position + new Vector3(-1, 0, 0);
-                bulletScript.damage = damage;
-                bulletScript.speed = -20;
-            }
+            bullet.transform.position = location.position + new Vector3(1, 0, 0);
+            bulletScript.damage = damage;
+            bulletScript.speed = 20;
+        }
+        else
+        {
+            bullet.transform.position = location.position + new Vector3(-1, 0, 0);
+            bulletScript.damage = damage;
+            bulletScript.speed = -20;
         }
     }
 
     IEnumerator cooldown()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3f);
+        Attack();
+        StartCoroutine(cooldown());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
