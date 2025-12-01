@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 539074605893103443}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7852380208152743399}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 80.6673, y: -1.8008013, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
@@ -189,7 +189,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 5
 --- !u!70 &9067877472169169440
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -248,3 +248,4 @@ MonoBehaviour:
   sprite: {fileID: 6465804048221386723}
   location: {fileID: 724017963668411272}
   meleeRange: {fileID: 9067877472169169440}
+  health: 50

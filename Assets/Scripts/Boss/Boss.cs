@@ -33,7 +33,7 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private CapsuleCollider2D meleeRange;
     private int damage = 5;
-    private float health = 50;
+    public float health = 50;
     private float attackCooldown = 0;
     private bool canAttack = true;
 
@@ -52,18 +52,10 @@ private void Start()
         {
             sprite.flipX = true;
         }
-        // if(canAttack)
-        // {
-        //     Attack();
-        //     canAttack = false;
-        // }
-        // else
-        // {
-        //     StartCoroutine(cooldown());
-        // }
+        Die();
     }
 
-    private void Attack()
+    private void Attack1()
     {   
         bullet = Instantiate(bulletRef);
         e_bullet bulletScript = bullet.GetComponent<e_bullet>();
@@ -83,9 +75,24 @@ private void Start()
 
     IEnumerator cooldown()
     {
+        anim.SetBool("isShooting", false);
+        anim.SetBool("isStomping", false);
         yield return new WaitForSeconds(3f);
-        Attack();
+        if(Random.Range(1, 10) % 2 == 0) 
+        {
+            Attack1();
+            anim.SetBool("isShooting", true);
+        }
         StartCoroutine(cooldown());
+    }
+
+    private void Die() 
+    {
+        if(health <= 0) 
+        {
+            Destroy(this.gameObject);
+            print("You win");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

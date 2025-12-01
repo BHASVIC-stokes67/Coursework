@@ -33,6 +33,12 @@ public class Bullet : MonoBehaviour
             Gunner gunnerScript = gunner.GetComponent<Gunner>();
             gunnerScript.health -= damage;
         }
+        else if (collision.gameObject.CompareTag("Boss"))
+        {
+            GameObject Boss = collision.gameObject;
+            Boss boss = Boss.GetComponent<Boss>();
+            boss.health -= damage;
+        }
         Destroy(this.gameObject);
     }
 }

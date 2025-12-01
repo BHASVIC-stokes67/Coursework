@@ -12,6 +12,7 @@ TagManager:
   - Gunner
   - Down
   - Platform
+  - Boss
   layers:
   - Default
   - TransparentFX
