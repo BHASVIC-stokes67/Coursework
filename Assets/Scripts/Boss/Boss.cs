@@ -61,15 +61,33 @@ private void Start()
         e_bullet bulletScript = bullet.GetComponent<e_bullet>();
         if (sprite.flipX == false)
         {
-            bullet.transform.position = location.position + new Vector3(1, 0, 0);
+            bullet.transform.position = location.position + new Vector3(1, -0.5f, 0);
             bulletScript.damage = damage;
             bulletScript.speed = 20;
         }
         else
         {
-            bullet.transform.position = location.position + new Vector3(-1, 0, 0);
+            bullet.transform.position = location.position + new Vector3(-1, -0.5f, 0);
             bulletScript.damage = damage;
             bulletScript.speed = -20;
+        }
+    }
+
+    private void Attack2()
+    {
+        rocks = Instantiate(rocksRef);
+        Rocks rockScript = rocks.GetComponent<Rocks>();
+        SpriteRenderer rockSprite = rocks.GetComponent<SpriteRenderer>();
+        if (sprite.flipX == false)
+        {
+            rocks.transform.position = location.position + new Vector3(3, -1, 0);
+            rockScript.damage = damage;
+        }
+        else
+        {
+            rocks.transform.position = location.position + new Vector3(-3, -1, 0);
+            rockScript.damage = damage;
+            rockSprite.flipX = true;
         }
     }
 
@@ -82,6 +100,11 @@ private void Start()
         {
             Attack1();
             anim.SetBool("isShooting", true);
+        }
+        else
+        {
+            Attack2();
+            anim.SetBool("isStomping", true);
         }
         StartCoroutine(cooldown());
     }

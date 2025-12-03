@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9100799130246678212}
   - component: {fileID: 7672343489196570523}
+  - component: {fileID: 6958547635362034232}
+  - component: {fileID: 7340068165446305230}
   m_Layer: 0
   m_Name: Boss_rocks
   m_TagString: Untagged
@@ -90,3 +92,100 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &6958547635362034232
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2589980041188313397}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.07}
+    newSize: {x: 1.28, y: 1.07}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.59999996, y: -0.095}
+      - {x: 0.56, y: -0.095}
+      - {x: 0.53999996, y: 0.21499999}
+      - {x: 0.51, y: 0.465}
+      - {x: 0.48, y: 0.53499997}
+      - {x: 0.42999998, y: 0.53499997}
+      - {x: 0.39, y: 0.48499998}
+      - {x: 0.37, y: 0.195}
+      - {x: 0.35999998, y: 0.044999998}
+      - {x: 0.34, y: 0.285}
+      - {x: 0.29999998, y: 0.315}
+      - {x: 0.26, y: 0.305}
+      - {x: 0.14999999, y: -0.085}
+      - {x: 0.12, y: 0.035}
+      - {x: 0.08, y: 0.024999999}
+      - {x: 0.04, y: -0.055}
+      - {x: -0.01, y: -0.185}
+      - {x: -0.02, y: -0.015}
+      - {x: -0.07, y: 0.114999995}
+      - {x: -0.11, y: 0.085}
+      - {x: -0.16, y: -0.16499999}
+      - {x: -0.21, y: -0.185}
+      - {x: -0.24, y: -0.035}
+      - {x: -0.29999998, y: -0.074999996}
+      - {x: -0.39, y: -0.325}
+      - {x: -0.42, y: -0.155}
+      - {x: -0.47, y: -0.13499999}
+      - {x: -0.48999998, y: -0.175}
+      - {x: -0.59999996, y: -0.255}
+      - {x: -0.64, y: -0.315}
+      - {x: -0.64, y: -0.53499997}
+      - {x: 0.64, y: -0.53499997}
+      - {x: 0.64, y: -0.185}
+      - {x: 0.63, y: -0.155}
+  m_UseDelaunayMesh: 0
+--- !u!114 &7340068165446305230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2589980041188313397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10fa0fed12b39ea46b1068f06fc477ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rocks
+  hitbox: {fileID: 6958547635362034232}
+  playerScript: {fileID: 8120565686201267312, guid: 708346258592c3d499d62fad33e4f52b, type: 3}
+  player: {fileID: 3644879226001094478, guid: 708346258592c3d499d62fad33e4f52b, type: 3}
+  damage: 0
