@@ -9,4 +9,11 @@ public class Restart : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         print("Reset game");
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown("r"))
+        {
+            RestartScene();
+        }
+    }
 }
