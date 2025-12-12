@@ -144,7 +144,7 @@ public class PlayerScript : MonoBehaviour
 
     //Creates a bullet when you are holding the gun on input
     private void Attack() {
-        if(Input.GetMouseButtonDown(0) && Time.time > attackSpeed && anim.GetBool("isHolding")) {
+        if(Input.GetMouseButton(0) && Time.time > attackSpeed && anim.GetBool("isHolding")) {
             bullet = Instantiate(bulletRef);
             Bullet bulletScript = bullet.GetComponent<Bullet>();
             if (sprite.flipX == false)
@@ -159,7 +159,7 @@ public class PlayerScript : MonoBehaviour
                 bulletScript.damage = damage;
                 bulletScript.speed = -20;
             }
-            attackSpeed = Time.time + 0.4f;
+            attackSpeed = Time.time + cooldown;
         }
     }
 
@@ -190,7 +190,7 @@ public class PlayerScript : MonoBehaviour
         }
         else if (item == "Broken_Sword_0(Clone)")
         {
-            cooldown = (float)(cooldown / 0.6);
+            cooldown = (float)(cooldown * 0.6);
         }
         else if (item == "gun_0(Clone)")
         {
